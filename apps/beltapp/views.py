@@ -12,6 +12,14 @@ def index(request):
 	# else:
 	# 	return redirect('/') #change homepage
 
+def success(request):
+	userid = request.session['userid']
+	user = User.objects.filter(id=userid)
+	context = {
+	"user": user
+	}
+	return render(request, 'beltapp/success.html')
+
 def registration(request):
 	data = User.objects.registrationvalidation(request.POST)
 	if data[0]:

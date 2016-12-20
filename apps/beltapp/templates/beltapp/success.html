@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+       <title>TITLE</title>
+       {% load static %}
+       <link rel="stylesheet" href="{% static 'beltapp/css/styles.css'%}">
+  </head>
+  <body>
+    <header>
+    	<h1 id="welcometitle">Welcome, {{user.name}}!</h1>
+    	<div class="navbar">
+    		<li><a href="/logout">Logout</a></li>
+    	</div>
+    {% if messages %}
+    	{% for message in messages %}
+    	<div><p style="color: red;">{{ message }}</p></div>
+      	{% endfor %}
+    {% endif %}
+    </header>
+    <div class="block">
+      <h2>Title Goes Here</h2>
+    </div>
+    <div class="block">
+    </div>
+      <h2>Title Goes Here</h2>
+  </body>
+
+</html>
