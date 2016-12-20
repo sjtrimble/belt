@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login and Registration</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'beltapp/css/styles.css'%}">
+</head>
+<body>
+	<div class="error-messsages">
+    {% if messages %}
+		{% for message in messages %}
+		<div><p style="color: red;">{{ message }}</p></div>
+      	{% endfor %}
+    {% endif %}
+	</div>
+	<div class="block">
+		<form action="registration" method="post">
+		{% csrf_token %}
+			<h1 id="title">Registration</h1> 
+			<table>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="name"/></td>
+				</tr>
+				<tr>
+					<td>Alias:</td>
+					<td><input type="text" name="alias"/></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><input type="text" name="email"/></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="password" name="password"/></td>
+				</tr>
+				<tr>
+					<td>Confirm Password:</td>
+					<td><input type="password" name="confirm_password"/></td>
+				</tr>
+				<tr>
+					<td>Date of Birth:</td>
+					<td><input type="date" name="birthday"></td>
+				<tr>
+			</table> 
+			<input type="hidden" name="formtype" value="registration">	
+			<input type="submit" value="Register">
+		</form>
+	</div>
+	<div class="block">
+		<form action="login" method="post">
+		{% csrf_token %}
+			<h1 id="title">Log In</h1> 
+			<table> 
+				<tr>
+					<td>Email:</td>
+					<td><input type="text" name="email"/></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="password" name="password"/></td>
+				</tr>
+			</table> 
+			<input type="hidden" name="formtype" value="login">
+			<input type="submit" value="Login">
+		</form>
+	</div>
+</body>
+</html>
