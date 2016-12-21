@@ -48,8 +48,6 @@ def destination(request, id):
 	trip = Trip.objects.filter(id=id)[0]
 	userid = request.session['userid']
 	user = User.objects.filter(id=userid)[0]
-	print tripstartdate
-	print date
 	context = {
 	"trip": trip,
 	"joiners": trip.attendee.all(),
