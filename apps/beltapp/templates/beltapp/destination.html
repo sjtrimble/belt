@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+       <title>Destination</title>
+       {% load static %}
+       <link rel="stylesheet" href="{% static 'beltapp/css/styles.css'%}">
+  </head>
+  <body>
+    <header>
+    	<div class="navbar">
+        <li><a href="/">Home</a></li>
+    		<li><a href="/logout">Logout</a></li>
+    	</div>
+    </header>
+    {{date}}
+    <div>
+      <h1>{{trip.destination}}</h1>
+      <p>Planned by: {{trip.user.name}}</p>
+      <p>Description: {{trip.description}}</p>
+      <p>Travel Date From: {{trip.start_date}}</p>
+      <p>Travel Date To: {{trip.end_date}}</p>
+    </div>
+    <br /><br />
+    <div>
+      <h2>Other Users Joining Trip:</h2>
+      {% for joiner in joiners %}
+      <p>{{joiner.name}}</p>
+      {% endfor %}
+    </div>
+  </body>
+
+</html>

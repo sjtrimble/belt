@@ -4,7 +4,7 @@ body {
 	box-sizing: border-box;
 }
 li {
-	list-style: none;	
+	list-style: none;
 }
 .block {
 	display: inline-block;
@@ -29,15 +29,16 @@ header li {
 .section {
 	margin-bottom: 40px;
 }
-.section span {
-	font-weight: bold;
-}
-#yourpokes {
-	border: 1px solid black;
-}
 h2 {
 	margin-top: 5px;
 }
 span {
 	font-weight: bold;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
 }

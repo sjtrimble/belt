@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+       <title>Travel Dashboard</title>
+       {% load static %}
+       <link rel="stylesheet" href="{% static 'beltapp/css/styles.css'%}">
+  </head>
+  <body>
+    <header>
+    	<h1 id="welcometitle">Welcome, {{user.name}}!</h1>
+    	<div class="navbar">
+    		<li><a href="/logout">Logout</a></li>
+    	</div>
+    {% if messages %}
+    	{% for message in messages %}
+    	<div><p style="color: red;">{{ message }}</p></div>
+      	{% endfor %}
+    {% endif %}
+  </header>
+
+    <div class="block">
+      <h2>Your Trip Schedules</h2
+        <table>
+          <tr>
+            <th>Destination</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Plan</th>
+          </tr>
+          {% for trip in mytrips %}
+          <div>
+          <tr>
+            <td><a href="destination/{{trip.id}}">{{trip.destination}}</a>
+            <td>{{trip.start_date}}</td>
+            <td>{{trip.end_date}}</td>
+            <td>{{trip.description}}</td>
+          </tr>
+        </div>
+          {% endfor %}
+        </table>
+    </div>
+    <div class="block">
+      <h2>Other User's Travel Plans</h2>
+      <table>
+        <tr>
+          <td>Destination</td>
+          <td>Travel Start Date</td>
+          <td>Travel End Date</td>
+          <td>Plan</td>
+        </tr>
+        {% for trip in othertrips %}
+        <form action="/jointrip" method="post">
+        {% csrf_token %}
+        <tr>
+          <input type="hidden" name="tripid" value="{{trip.id}}"/>
+          <td><a href="destination/{{trip.id}}">{{trip.destination}}</a></td>
+          <td>{{trip.start_date}}</td>
+          <td>{{trip.end_date}}</td>
+          <td>{{trip.description}}</td>
+          <td><a href="/jointrip"><input type="submit" value="Join"/></a></td>
+        </tr>
+        </form>
+        {% endfor %}
+      </table>
+    </div>
+
+    <p><a href="/travels/add">Add Travel Plan</a></p>
+
+  </body>
+
+</html>

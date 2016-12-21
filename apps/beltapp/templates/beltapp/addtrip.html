@@ -7,8 +7,8 @@
   </head>
   <body>
     <header>
-    	<h1 id="welcometitle">Welcome, {{user.name}}!</h1>
     	<div class="navbar">
+        <li><a href="/">Home</a></li>
     		<li><a href="/logout">Logout</a></li>
     	</div>
     {% if messages %}
@@ -17,12 +17,18 @@
       	{% endfor %}
     {% endif %}
     </header>
+
     <div class="block">
-      <h2>Title Goes Here</h2>
+      <form method="post" action="/processnewtrip">
+      {% csrf_token %}
+      <h2>Add a Trip</h2>
+      <p>Destination: <input type="text" name="destination"/></p>
+      <p>Description: <input type="description" name="description"/></p>
+      <p>Travel Date From: <input type="date" name="start_date"/></p>
+      <p>Travel Date To: <input type="date" name="end_date"/></p>
+      <input type="submit" value="Add"/>
+      </form>
     </div>
-    <div class="block">
-    </div>
-      <h2>Title Goes Here</h2>
   </body>
 
 </html>
